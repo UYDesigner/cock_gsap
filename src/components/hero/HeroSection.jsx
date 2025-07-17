@@ -16,14 +16,14 @@ const HeroSection = () => {
         const paragraphSplit = new SplitText('.subtitle', { type: 'lines' });
         heroSplit.chars.forEach((char) => char.classList.add('text-gradient'))
         gsap.from(heroSplit.chars, {
-            y: 100,
+            yPercent: 100,
             duration: 1.8,
             ease: 'expo.out',
             stagger: 0.05
         })
         gsap.from(paragraphSplit.lines, {
             opacity: 0,
-            y: 100,
+            yPercent: 100,
             duration: 1.8,
             ease: 'expo.out',
             stagger: 0.06,
@@ -39,6 +39,7 @@ const HeroSection = () => {
             }
         }).to('.right-leaf', { y: 200 }, 0)
             .to('.left-leaf', { y: -200 }, 0)
+            .to(".arrow", { y: 100 }, 0);
 
         const startValue = isMobile ? "top 50%" : "center 60%";
         const endValue = isMobile ? "120% top" : "bottom top";
@@ -52,7 +53,7 @@ const HeroSection = () => {
                 pin: true,
             },
         });
- 
+
         videoRef.current.onloadedmetadata = () => {
             tl.to(videoRef.current, {
                 currentTime: videoRef.current.duration,
@@ -93,7 +94,7 @@ const HeroSection = () => {
             <div className="video absolute inset-0">
                 <video
                     ref={videoRef}
-                    src='/videos/input.mp4'
+                   src="/videos/output.mp4"
                     muted
                     playsInline
                     preload="auto"
